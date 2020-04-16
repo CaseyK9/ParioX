@@ -1,0 +1,6 @@
+RewriteEngine On
+RewriteBase /
+
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ^([^./]+)(/.*)?$ $1.php$2 [L]
+RewriteRule ([^/\.]+)/([^/\.]+)/?$ view?level1=$1&level2=$2 [L]
