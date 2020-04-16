@@ -18,6 +18,7 @@ ParioX is a php-written uploading, viewing and downloading tool for images, vide
 
 
 # Known issues/TODO:
+- Add support for Adsense on view.php / index.php
 - Create an actual front page and not a dummy bootstrap layout
 - Make it so the original filename will be kept upon download(this is more needed for uploaded files than images)
 - Clean up the view page a bit
