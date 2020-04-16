@@ -1,8 +1,25 @@
 # ParioX (BETA 0.1)
 ParioX is a php-written uploading, viewing and downloading tool for images, videos and files. Written to work for ShareX, but supports any POST request through form-data!
 
+# Features:
+- Supports uploading of images, videos and files!
+- mime type recognision, mimetypes not configured in the config are sorted as files and don't have a display feature
+- Build in mp4 player!
+- images scale to the size of the view window.
+- Instant download feature
+- User management system and multi user support.
+
+# Requirements:
+- A recent version of MySQL/MariaDB
+- PHP 5.6
+- Apache, nginx or any webserver with PHP support.
+
+
+
+
 # Known issues/TODO:
 - Create an actual front page and not a dummy bootstrap layout
+- Make it so the original filename will be kept upon download(this is more needed for uploaded files than images)
 - Clean up the view page a bit
 - the installation needs to be reworked and is a jquery mess, but works!
 - Clean up the admin page
@@ -11,12 +28,20 @@ ParioX is a php-written uploading, viewing and downloading tool for images, vide
 
 #FAQ 
 Q: I cannot upload a file that's larger than X megabytes!
-A: ParioX's max file upload size is governed by the php max file size, and the php max post size settings in php.ini. 
+A: ParioX's max file upload size is governed by the php max file size, and the php max post size settings in php.ini.
+
+Q: why does XYZ look weird/unfinished?
+A: This is a beta.
+
+Q: Something's not working, and i'm sure i followed the instructions!
+A: Please make an issue on the github issues page.
+
+
 # Why ParioX?
-I wrote ParioX as an alternative to https://github.com/Pips801/UploadX, it work, but only for images and it was quite a glitchy mess. Instead of rewriting it, i wrote ParioX from scratch from barebones PHP and 0 libaries. Just vanilla PHP, javascript and bootstrap as frontend keep ParioX running.
+I wrote ParioX as an alternative to https://github.com/Pips801/UploadX, i wanted to use a custom uploader and UploadX did work, but only for images and it was quite a glitchy mess. Instead of rewriting it, i wrote ParioX from scratch from barebones PHP and 0 libaries. Just vanilla PHP, javascript and bootstrap as frontend keep ParioX running.
 
 # So why not use streamable for video, and imgur to share images?
-The vast amount of upload services compitable with ShareX(out of the box) either have shady agreements that make you give away all your rights to whatever you upload! Besides this, some delete your images if they don't get enough, or too many views. ParioX runs on your own webserver meaning whatever you upload is yours to keep and delete.
+The vast amount of upload services compitable with ShareX(out of the box) either have shady agreements that make you give away all your rights to whatever you upload. Besides this, some delete your images if they don't get enough, or too many views. ParioX runs on your own webserver meaning whatever you upload is yours to keep and delete.
 
 # But webservers and storage are expensive!
 I currently pay 9 euro's a month for 200gb of storage on a VPS, and there's much better options for storage out there. Some shared hosting providers also provide 'unlimited' storage so get yourself a reputable host with a lot of storage options and you've got a great backup server for all your screenshots and clips you want to share.
