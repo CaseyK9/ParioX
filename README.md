@@ -44,7 +44,9 @@ I currently pay 9 euro's a month for 200gb of storage on a VPS, and there's much
 ![step5](https://images.mgroeneveld.nl/images/6495d096.png)
 
 6. Ensure installation was successful by testing an upload in the prompt that appears after step 5.
-![step6}(https://images.mgroeneveld.nl/images/2cef102a.png)
+
+![step6](https://images.mgroeneveld.nl/images/2cef102a.png)
+
 # Example .sxcu file
 ```
 
