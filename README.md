@@ -27,14 +27,18 @@ ParioX is a php-written uploading, viewing and downloading tool for images, vide
 - Create roles for users and admins, now every user created has the power to delete other users.
 - Create chunked upload system to allow for large file uploads, and prevent issues with php's max file size.
 
-#FAQ 
+# FAQ
+
 Q: I cannot upload a file that's larger than X megabytes!
+
 A: ParioX's max file upload size is governed by the php max file size, and the php max post size settings in php.ini.
 
 Q: why does XYZ look weird/unfinished?
+
 A: This is a beta.
 
 Q: Something's not working, and i'm sure i followed the instructions!
+
 A: Please make an issue on the github issues page.
 
 
