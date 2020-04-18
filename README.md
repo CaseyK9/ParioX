@@ -29,18 +29,17 @@ ParioX is a php-written uploading, viewing and downloading tool for images, vide
 
 # FAQ
 
-Q: I cannot upload a file that's larger than X megabytes!
-
+Q: I cannot upload a file that's larger than X megabytes! \
 A: ParioX's max file upload size is governed by the php max file size, and the php max post size settings in php.ini.
 
-Q: why does XYZ look weird/unfinished?
-
+Q: why does XYZ look weird/unfinished? \
 A: This is a beta.
 
-Q: Something's not working, and i'm sure i followed the instructions!
-
+Q: Something's not working, and i'm sure i followed the instructions! \
 A: Please make an issue on the github issues page.
 
+Q: Uploading an image returns a 500 error. \
+A: ParioX wasn't able to find the uploaded image in the temp php directory. This is a configuration issue in php.ini. set your php_tmp_dir
 
 # Why ParioX?
 I wrote ParioX as an alternative to https://github.com/Pips801/UploadX, i wanted to use a custom uploader and UploadX did work, but only for images and it was quite a glitchy mess. Instead of rewriting it, i wrote ParioX from scratch from barebones PHP and 0 libaries. Just vanilla PHP, javascript and bootstrap as frontend keep ParioX running.
