@@ -1,5 +1,14 @@
 
 IF YOU ARE UPDATING FROM AN OLDER VERSION, JUST REPLACE ALL FILES AND ONLY RUN UPGRADE.PHP!
+```
+V0.2:
+- Rewrote how the config is changed and recognised during installation
+- Added an update script, aswell as a new config entry for storing the installed version. This should give the upgrade script the opportunity do do whatever it needs regardless what version you upgrade from.
+- Added version check to index and admin page to ensure upgrade has been done before new features can be accessed!
+- Cleaned up admin interface a bit(Users has been removed from the Dropdown, and given its own button;  added general settings page)
+- When pariox cannot find an uploaded image (because it cannot access/find the temp PHP directory) it will now return the proper error instead of complaining thats it's a permission error
+- Enabled directinking option.
+```
 # ParioX (BETA 0.2)
 ParioX is a php-written uploading, viewing and downloading tool for images, videos and files. Written to work for ShareX, but supports any POST request through form-data!
 
