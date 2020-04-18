@@ -1,4 +1,6 @@
-# ParioX (BETA 0.1)
+
+IF YOU ARE UPDATING FROM AN OLDER VERSION, JUST REPLACE ALL FILES AND ONLY RUN UPGRADE.PHP!
+# ParioX (BETA 0.2)
 ParioX is a php-written uploading, viewing and downloading tool for images, videos and files. Written to work for ShareX, but supports any POST request through form-data!
 
 # Features:
@@ -7,7 +9,7 @@ ParioX is a php-written uploading, viewing and downloading tool for images, vide
 - Build in mp4 player!
 - images scale to the size of the view window.
 - Instant download feature
-- User management system and multi user support.
+- User management system and multi user support. (planned in V0.3)
 
 # Requirements:
 - A recent version of MySQL/MariaDB
@@ -29,18 +31,17 @@ ParioX is a php-written uploading, viewing and downloading tool for images, vide
 
 # FAQ
 
-Q: I cannot upload a file that's larger than X megabytes!
-
+Q: I cannot upload a file that's larger than X megabytes! \
 A: ParioX's max file upload size is governed by the php max file size, and the php max post size settings in php.ini.
 
-Q: why does XYZ look weird/unfinished?
-
+Q: why does XYZ look weird/unfinished? \
 A: This is a beta.
 
-Q: Something's not working, and i'm sure i followed the instructions!
-
+Q: Something's not working, and i'm sure i followed the instructions! \
 A: Please make an issue on the github issues page.
 
+Q: Uploading an image returns a 500 error. \
+A: ParioX wasn't able to find the uploaded image in the temp php directory. This is a configuration issue in php.ini. set your php_tmp_dir
 
 # Why ParioX?
 I wrote ParioX as an alternative to https://github.com/Pips801/UploadX, i wanted to use a custom uploader and UploadX did work, but only for images and it was quite a glitchy mess. Instead of rewriting it, i wrote ParioX from scratch from barebones PHP and 0 libaries. Just vanilla PHP, javascript and bootstrap as frontend keep ParioX running.

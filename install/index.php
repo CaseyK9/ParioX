@@ -7,7 +7,17 @@ $step1done = false;
 $step2done = false;
 $account = false;
 $configfile = '../inc/config.php';
+
+
+// Create config file if it does not exist yet.
+if(!is_file($configfile)) {
+// Config doesn't exist yet. New installation!
+    file_put_contents($configfile, "");
+}
+
 require_once('../inc/config.php');
+
+
 
 
 $configcontent = file_get_contents($configfile);

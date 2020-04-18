@@ -109,7 +109,7 @@ $config_extension_videos = array(
     ".ogg"
 );
 
-
+$installed_version = 0.2;
 
 
 
@@ -172,7 +172,11 @@ CREATE TABLE IF NOT EXISTS `settings` (
   `site_header` mediumtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `site_subtext` mediumtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `directlinking` tinyint(1) NOT NULL DEFAULT 0,
-  UNIQUE KEY `domain` (`domain`) USING HASH
+  `maxfoldersize_enabled` tinyint(1) NOT NULL DEFAULT 0,
+  `maxfoldersize_inmb` int(11) NOT NULL DEFAULT 5000,
+  `deleteafterxdays_enabled` tinyint(1) NOT NULL DEFAULT 0,
+  `deleteafterxdays_amount` int(11) NOT NULL DEFAULT 60,
+  UNIQUE KEY `domain` (`domain`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;";
 
     $sql5 =

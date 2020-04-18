@@ -26,13 +26,29 @@ include('../inc/config.php');
 
     <!-- Heading -->
     <div class="sidebar-heading">
-        Interface
+        User management
+    </div>
+    <li class="nav-item ">
+        <a class="nav-link" href="users.php">
+            <i class="fas fa-user"></i>
+            <span>Users/API Keys</span></a>
+    </li>
+    <hr class="sidebar-divider">
+
+    <!-- Heading -->
+    <div class="sidebar-heading">
+        Configuration
     </div>
 
+    <li class="nav-item ">
+        <a class="nav-link" href="settings.php">
+            <i class="fas fa-wrench"></i>
+            <span>General settings</span></a>
+    </li>
     <!-- Nav Item - Pages Collapse Menu -->
 
     <!-- Nav Item - Utilities Collapse Menu -->
-    <li class="nav-item">
+ <!--   <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
             <i class="fas fa-fw fa-wrench"></i>
             <span>Utilities</span>
@@ -44,9 +60,8 @@ include('../inc/config.php');
             </div>
         </div>
     </li>
-
+-->
     <!-- Divider -->
-    <hr class="sidebar-divider">
 
     <!-- Heading -->
 

@@ -11,42 +11,90 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] == false){
     die(); // just in case;
 }
 
-// saves us making another file
+// saves us making another file, but we should seperate this sometime soon to be honest.
 if (isset($_POST['directlinking'])){
-
     if ($stmt2 = $conn->prepare('UPDATE settings SET directlinking = ?')) {
         // Bind parameters (s = string, i = int, b = blob, etc), in our case the username is a string so we use "s"
         $stmt2->bind_param('s', $_POST['directlinking']);
         $stmt2->execute();
         echo 'OK';
     }
-
-
 $stmt2->close();
-
 die();
-
 }
 
-if ($stmt = $conn->prepare('SELECT directlinking FROM settings')) {
-    // Bind parameters (s = string, i = int, b = blob, etc), in our case the username is a string so we use "s"
+if (isset($_POST['enable_maxfoldersize'])){
+
+    if ($stmt2 = $conn->prepare('UPDATE settings SET maxfoldersize_enabled = ?')) {
+        // Bind parameters (s = string, i = int, b = blob, etc), in our case the username is a string so we use "s"
+        $stmt2->bind_param('s', $_POST['enable_maxfoldersize']);
+        $stmt2->execute();
+        echo 'OK';
+    }
+    $stmt2->close();
+    die();
+}
+
+if (isset($_POST['enable_toggle_deleteafter'])){
+
+    if ($stmt2 = $conn->prepare('UPDATE settings SET deleteafterxdays_enabled = ?')) {
+        // Bind parameters (s = string, i = int, b = blob, etc), in our case the username is a string so we use "s"
+        $stmt2->bind_param('s', $_POST['enable_toggle_deleteafter']);
+        $stmt2->execute();
+        echo 'OK';
+    }
+    $stmt2->close();
+    die();
+}
+if (isset($_POST['maxfoldersize_amountinmb'])){
+
+    if ($stmt2 = $conn->prepare('UPDATE settings SET maxfoldersize_inmb = ?')) {
+        // Bind parameters (s = string, i = int, b = blob, etc), in our case the username is a string so we use "s"
+        $stmt2->bind_param('s', $_POST['maxfoldersize_amountinmb']);
+        $stmt2->execute();
+        echo 'OK';
+    }
+    $stmt2->close();
+    die();
+}
+
+
+if (isset($_POST['deleteafterxdays_amount'])){
+
+    if ($stmt2 = $conn->prepare('UPDATE settings SET deleteafterxdays_amount = ?')) {
+        // Bind parameters (s = string, i = int, b = blob, etc), in our case the username is a string so we use "s"
+        $stmt2->bind_param('s', $_POST['deleteafterxdays_amount']);
+        $stmt2->execute();
+        echo 'OK';
+    }
+    $stmt2->close();
+    die();
+}
+
+
+
+
+
+
+
+
+
+if ($stmt = $conn->prepare('SELECT directlinking, maxfoldersize_enabled, maxfoldersize_inmb, deleteafterxdays_enabled, deleteafterxdays_amount FROM settings')) {
     $stmt->execute();
     // Store the result so we can check if the account exists in the database.
     $stmt->store_result();
 }
 if ($stmt->num_rows > 0) {
-    $stmt->bind_result($directlinking);
+    $stmt->bind_result($directlinking, $maxfoldersize_enabled, $maxfoldersize_inmb, $deleteafterxdays_enabled, $deleteafterxdays_amount);
     $stmt->fetch();
 }
 
 
 
-if($directlinking){
-    $directlinking_checked = 'checked="checked"';
+if($directlinking){ $directlinking_checked = 'checked="checked"'; } else { $directlinking_checked = "";}
+if($maxfoldersize_enabled){ $maxfoldersize_enabled_checked = 'checked="checked"'; } else { $maxfoldersize_enabled_checked = "";}
+if($deleteafterxdays_enabled){ $deleteafterxdays_enabled_checked = 'checked="checked"'; } else { $deleteafterxdays_enabled_checked = "";}
 
-}else{
-    $directlinking_checked = "";
-}
 
 
 
@@ -118,12 +166,45 @@ if($directlinking){
                                 <h6 class="m-0 font-weight-bold text-primary">Website settings</h6>
                             </div>
                             <div class="card-body">
-                                The styling for this basic card example is created by using default Bootstrap utility classes. By using utility classes, the style of the card component can be easily modified with no need for any custom CSS!
+                                You can manually change the front-page settings through the database if you with do so so. This settings page will be updated when the front page is actually functional!
                             </div>
                         </div>
+                        <div class="card shadow mb-4">
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary">Storage Settings</h6>
+                            </div>
+                            <div class="card-body">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col"></div>
+                                        <div class="col"</div>
+                                        <div class="w-100"></div>
+                                        <div class="col"></div></div>
+                                        <div class="col"></div>
+                                    </div>
+
+
+                                <div class="row">
+                                    <div class="col-6 col-sm-4"><input type="checkbox" class="form-check-input" id="toggle_maxfoldersize" <?php echo $maxfoldersize_enabled_checked ?>>
+                                        <label class="form-check-label" for="toggle_maxfoldersize"> Enable max folder size(In MB)</label></div>
+                                    <div class="col-6 col-sm-4"><input type="checkbox" class="form-check-input" id="toggle_deleteafter" <?php echo $deleteafterxdays_enabled_checked ?>>
+                                        <label class="form-check-label" for="toggle_deleteafter">Delete after X days</label></div>
+
+                                    <!-- Force next columns to break to new line at md breakpoint and up -->
+                                    <div class="w-100 d-none d-md-block"></div>
+
+                                    <div class="col-6 col-sm-4"><input id="maxfoldersize_amount" name="maxfoldersize_amount" type="number" min="10" value="<?php echo $maxfoldersize_inmb ?>"></div>
+                                    <div class="col-6 col-sm-4"><input id="deleteafterxdays_amount" name="deleteafterxdays_amount" type="number" min="1" value="<?php echo $deleteafterxdays_amount ?>"></div>
+                                </div>
+
+
+                                </div>
+                            </div>
+
 
                     </div>
-                    <div class="col-lg-6">
+
+
 
 
 
@@ -147,7 +228,8 @@ if($directlinking){
                             </div>
                         </div>
 
-                    </div>
+
+
 
 
 
