@@ -1,5 +1,5 @@
-IF YOU ARE UPDATING FROM AN OLDER VERSION, JUST REPLACE ALL FILES AND ONLY RUN UPGRADE.PHP!
 
+IF YOU ARE UPDATING FROM AN OLDER VERSION, JUST REPLACE ALL FILES AND ONLY RUN UPGRADE.PHP!
 # ParioX (BETA 0.2)
 ParioX is a php-written uploading, viewing and downloading tool for images, videos and files. Written to work for ShareX, but supports any POST request through form-data!
 
