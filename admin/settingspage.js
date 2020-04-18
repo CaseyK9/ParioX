@@ -143,11 +143,11 @@ $(document).ready(function() {
 
 
     function save_deleteafterxdays_amount(){
-        var valuetosave  = $("#maxfoldersize_amount").val();
+        var valuetosave  = $("#deleteafterxdays_amount").val();
         $.ajax({
             type: "POST",
             url: "settings.php",
-            data: {maxfoldersize_amountinmb: valuetosave,
+            data: {deleteafterxdays_amount: valuetosave,
             },
             success: function(data)
             {

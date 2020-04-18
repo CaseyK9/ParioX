@@ -41,3 +41,15 @@ function performversionchecks($conn){
     }
 }
 performversionchecks($conn);
+
+    $dirname = './install';
+    if (is_dir($dirname)) {
+        $dir = new RecursiveDirectoryIterator($dirname, RecursiveDirectoryIterator::SKIP_DOTS);
+        foreach (new RecursiveIteratorIterator($dir, RecursiveIteratorIterator::CHILD_FIRST ) as $filename => $file) {
+            if (is_file($filename))
+                unlink($filename);
+            else
+                rmdir($filename);
+        }
+        rmdir($dirname);
+    }

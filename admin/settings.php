@@ -59,6 +59,17 @@ if (isset($_POST['maxfoldersize_amountinmb'])){
 }
 
 
+if (isset($_POST['deleteafterxdays_amount'])){
+
+    if ($stmt2 = $conn->prepare('UPDATE settings SET deleteafterxdays_amount = ?')) {
+        // Bind parameters (s = string, i = int, b = blob, etc), in our case the username is a string so we use "s"
+        $stmt2->bind_param('s', $_POST['deleteafterxdays_amount']);
+        $stmt2->execute();
+        echo 'OK';
+    }
+    $stmt2->close();
+    die();
+}
 
 
 

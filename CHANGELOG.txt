@@ -4,5 +4,7 @@ V0.2:
 - Added version check to index and admin page to ensure upgrade has been done before new features can be accessed!
 - Cleaned up admin interface a bit(Users has been removed from the Dropdown, and given its own button;  added general settings page)
 - When pariox cannot find an uploaded image (because it cannot access/find the temp PHP directory) it will now return the proper error instead of complaining thats it's a permission error
+- Enabled directinking option.
+
 V0.1:
 - Initial commit

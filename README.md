@@ -1,4 +1,6 @@
-# ParioX (BETA 0.1)
+IF YOU ARE UPDATING FROM AN OLDER VERSION, JUST REPLACE ALL FILES AND ONLY RUN UPGRADE.PHP!
+
+# ParioX (BETA 0.2)
 ParioX is a php-written uploading, viewing and downloading tool for images, videos and files. Written to work for ShareX, but supports any POST request through form-data!
 
 # Features:
@@ -7,7 +9,7 @@ ParioX is a php-written uploading, viewing and downloading tool for images, vide
 - Build in mp4 player!
 - images scale to the size of the view window.
 - Instant download feature
-- User management system and multi user support.
+- User management system and multi user support. (planned in V0.3)
 
 # Requirements:
 - A recent version of MySQL/MariaDB

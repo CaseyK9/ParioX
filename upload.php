@@ -48,7 +48,7 @@ if ($stmt->num_rows > 0) {
     // key exists in the database so there's a user allowed to store files
     $stmt->bind_result($id, $storedkey);
     $stmt->fetch();
-    upload();
+    upload($maxfoldersize_enabled, $maxfoldersize_inmb, $deleteafterxdays_enabled, $deleteafterxdays_amount);
 
 
 } else {
@@ -99,7 +99,7 @@ function folderSize ()
     return $size;
 }
 
-function cleanup($conn) {
+function cleanup($conn, $maxfoldersize_enabled, $maxfoldersize_inmb, $deleteafterxdays_enabled, $deleteafterxdays_amount) {
     global $remove_fromlocation;
     if ($stmt = $conn->prepare('SELECT full_location FROM uploads ORDER BY id ASC LIMIT 1')) {
         $stmt->execute();
@@ -111,7 +111,7 @@ function cleanup($conn) {
         $stmt->bind_result($remove_fromlocation);
         $stmt->fetch();
         unlink($remove_fromlocation);
-        upload();
+        upload($maxfoldersize_enabled, $maxfoldersize_inmb, $deleteafterxdays_enabled, $deleteafterxdays_amount);
     }
 }
 
@@ -124,12 +124,16 @@ function remove_olderthan($conn)
         $stmt->bind_param("s", $deleteafterxdays_amount);
         $stmt->execute();
         // Store the result so we can check if the account exists in the database.
-        $stmt->store_result();
+        $stmt_result = $stmt->get_result();
     }
-    while ($row = $stmt->fetch_assoc()) {
-        $fullpath_to_delete = $row['full_location'];
-        if (unlink($fullpath_to_delete)) {
 
+    if ($stmt_result->num_rows > 0) {
+        while ($row_data = $stmt_result->fetch_assoc()) {
+            $fullpath_to_delete = $row_data['full_location'];
+            //if (unlink($fullpath_to_delete)) {
+
+
+           // }
             if ($stmt = $conn->prepare('DELETE FROM uploads WHERE full_location = ?')) {
                 $stmt->bind_param("s", $fullpath_to_delete);
                 $stmt->execute();
@@ -154,6 +158,12 @@ function upload($maxfoldersize_enabled, $maxfoldersize_inmb, $deleteafterxdays_e
     global $config_site_domain;
     global $directlinking;
     global $domainname;
+    global $file_name;
+    global $full_location;
+    global $date;
+    global $type;
+    global $mimetype;
+    global $filesize;
 
     $cancontinue = true;
     // [0] is the file name, [1] the file type
@@ -167,10 +177,10 @@ function upload($maxfoldersize_enabled, $maxfoldersize_inmb, $deleteafterxdays_e
     $filesize = formatSizeUnits($_FILES['file']['size']);
 
     if ($maxfoldersize_enabled) {
-        if ($maxfoldersize_inmb < folderSize() ){
-            $cancontinue = false;
-            cleanup($conn);
-        }
+        //if ($maxfoldersize_inmb < folderSize() ){
+       //     $cancontinue = false;
+     //       cleanup($conn);
+   //     }
     }
 
 
@@ -218,7 +228,7 @@ function upload($maxfoldersize_enabled, $maxfoldersize_inmb, $deleteafterxdays_e
                 }
                 $stmt->close();
                 if ($directlinking) {
-                    echo $full_location;
+                    echo $config_site_domain . $full_location;
                 } else {
 
                     echo $config_site_domain . '/view/' . $type . "/" . $file_name;
@@ -233,7 +243,7 @@ function upload($maxfoldersize_enabled, $maxfoldersize_inmb, $deleteafterxdays_e
         cleanup();
     }
     if ($deleteafterxdays_enabled) {
-        remove_olderthan();
+        remove_olderthan($conn);
     }
 }
 $conn->close();
