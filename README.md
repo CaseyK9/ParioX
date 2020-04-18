@@ -1,4 +1,4 @@
-# ParioX (BETA 0.1)
+# ParioX (BETA 0.2)
 ParioX is a php-written uploading, viewing and downloading tool for images, videos and files. Written to work for ShareX, but supports any POST request through form-data!
 
 # Features:
